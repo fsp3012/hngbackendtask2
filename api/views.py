@@ -18,29 +18,17 @@ def CreateUser(request):
             return Response({'Message': 'User Not Created', 'data': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-def getUser(request):
-    id_param = request.GET.get('id')
-    name_param = request.GET.get('name')
+def getUser(request, id):
     if request.method == 'GET':
         try:
-            if id_param:
-                user = User.objects.get(id=id_param)
-            elif name_param:
-                user = User.objects.get(name=name_param)
-            else:
-                raise Http404("Please provide either 'id' or 'name' parameter")
+            user = User.objects.get(id=id)
             serializer = UserSerializer(user, many=False)
             return Response(serializer.data, status=status.HTTP_200_OK) 
         except User.DoesNotExist:
             raise Http404("User does not exist")
     elif request.method == 'PUT':
         try:
-            if id_param:
-                user = User.objects.get(id=id_param)
-            elif name_param:
-                user = User.objects.get(name=name_param)
-            else:
-                raise Http404("Please provide either 'id' or 'name' parameter")        
+            user = User.objects.get(id=id)
             serializer = UserSerializer(instance=user, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -51,12 +39,7 @@ def getUser(request):
             raise Http404("User does not exist")    
     elif request.method == 'DELETE':
         try:
-            if id_param:
-                user = User.objects.get(id=id_param)
-            elif name_param:
-                user = User.objects.get(name=name_param)
-            else:
-                raise Http404("Please provide either 'id' or 'name' parameter")
+            user = User.objects.get(id=id)
             user.delete()
             return Response({'Message': 'User Deleted'}, status=status.HTTP_200_OK)
         except User.DoesNotExist:
