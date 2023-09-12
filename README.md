@@ -15,9 +15,9 @@ Welcome to the User Management API documentation. This API allows you to create,
 4. [Usage Examples](#usage-examples)
 
 ## 1. Installation
-     1. Installation
-     Make sure you have Django and Django REST framework installed in your project. If not, you can install them using pip:
-     pip install django djangorestframework
+    1. Installation
+    Make sure you have Django and Django REST framework installed in your project. If not, you can install them using pip:
+    pip install django djangorestframework
 
     2. Configure Django Settings
     Make sure your Django project is configured properly. Ensure that the INSTALLED_APPS in your settings.py includes your 
