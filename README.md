@@ -63,11 +63,12 @@ Request Format (DELETE):
 To delete a user by id, make a DELETE request with the id:
 DELETE https://hngbackendtask2.onrender.com/api/user/id/
 
-2. Request/Response Formats
+2. Request/Response Formats:
 All API endpoints accept and return data in JSON format.
 Request and response bodies should be valid JSON objects.
 
-3. Usage Examples
+3. Usage Examples:
+   
 Creating a User
 curl -X POST (https://hngbackendtask2.onrender.com/api/create/) -d '{"name": "Fakorede Olamide"}' -H "Content-Type: application/json"
 
